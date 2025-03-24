@@ -5,11 +5,14 @@ process PREPROCESS {
 
     input:
     tuple val(meta), path(metadata)
-    tuple val(meta), path(countdata)   
+    tuple val(meta), path(countdata)  
+    tuple val(meta), path(viraldata) 
 
     output:
-    tuple val(meta), path("*meta_train.csv"), path("*count_train.csv")        , emit: train_set
-    tuple val(meta), path("*meta_test.csv"), path("*count_test.csv")          , emit: test_set
+    tuple val(meta), path("*meta_train.csv"), path("*human_count_train.csv")        , emit: human_train_set
+    tuple val(meta), path("*meta_test.csv"), path("*human_count_test.csv")          , emit: human_test_set
+    tuple val(meta), path("*meta_train.csv"), path("*viral_count_train.csv")        , emit: viral_train_set
+    tuple val(meta), path("*meta_test.csv"), path("*viral_count_test.csv")          , emit: viral_test_set
 
     script:
     def sampling_ratio          = task.ext.sampling_ratio ?: 0.8
@@ -20,13 +23,12 @@ process PREPROCESS {
     set.seed(${sampling_seed})
     suppressMessages(library(caret))
 
-    metadata <- read.csv("${metadata}", row.names=1)
+    metadata <- read.csv("${metadata}", row.names=2)
     rawdata <- read.csv("${countdata}", row.names=1)
+    viraldata <- read.csv("${viraldata}", row.names=1)
 
-    print(dim(rawdata))
     gene_sums <- rowSums(rawdata)
     rawdata <- rawdata[gene_sums > 10, ]
-    print(dim(rawdata))
 
     # Sampling & partition
     train_idx <- createDataPartition(metadata\$group, p = as.numeric(${sampling_ratio}), list = FALSE)
@@ -35,10 +37,14 @@ process PREPROCESS {
     meta_test <- metadata[-train_idx, ]
     df_train <- rawdata[, rownames(meta_train)]
     df_test <- rawdata[, rownames(meta_test)]
+    df_viral_train <- viraldata[, rownames(meta_train)]
+    df_viral_test <- viraldata[, rownames(meta_test)]
 
     write.csv(meta_train, "meta_train.csv", row.names=TRUE)
     write.csv(meta_test, "meta_test.csv", row.names=TRUE)
-    write.csv(df_train, "count_train.csv", row.names=TRUE)
-    write.csv(df_test, "count_test.csv", row.names=TRUE)
+    write.csv(df_train, "human_count_train.csv", row.names=TRUE)
+    write.csv(df_test, "human_count_test.csv", row.names=TRUE)
+    write.csv(df_viral_train, "viral_count_train.csv", row.names=TRUE)
+    write.csv(df_viral_test, "viral_count_test.csv", row.names=TRUE)
     """
 }

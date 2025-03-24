@@ -1,0 +1,183 @@
+Mar-24 11:27:19.120 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --model XGboost -resume
+Mar-24 11:27:19.537 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Mar-24 11:27:19.574 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bdkhoi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Mar-24 11:27:19.600 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-24 11:27:19.601 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-24 11:27:19.606 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-24 11:27:19.632 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-24 11:27:19.679 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-24 11:27:19.684 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-24 11:27:19.734 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bdkhoi/.nextflow/secrets/store.json
+Mar-24 11:27:19.740 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@723ed581] - activable => nextflow.secret.LocalSecretsProvider@723ed581
+Mar-24 11:27:19.769 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-24 11:27:20.860 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Mar-24 11:27:20.883 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [stoic_northcutt] DSL2 - revision: 47116a1ec3
+Mar-24 11:27:20.886 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-24 11:27:20.887 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-24 11:27:20.972 [main] DEBUG nextflow.Session - Session UUID: c872bd9e-ca91-420c-b965-151b07b5332e
+Mar-24 11:27:20.973 [main] DEBUG nextflow.Session - Run name: stoic_northcutt
+Mar-24 11:27:20.974 [main] DEBUG nextflow.Session - Executor pool size: 88
+Mar-24 11:27:20.988 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-24 11:27:20.996 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-24 11:27:21.032 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.4 build 5934
+  Created: 20-01-2025 16:47 UTC (23:47 ICST)
+  System: Linux 6.8.0-51-generic
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 4167677@hpc02 [127.0.1.1]
+  CPUs: 88 - Mem: 503.8 GB (72.3 GB) - Swap: 2 GB (1.5 GB)
+Mar-24 11:27:22.475 [main] DEBUG nextflow.Session - Work-dir: /home/bdkhoi/projects/transcriptomics_classifier/work [ext2/ext3]
+Mar-24 11:27:22.519 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-24 11:27:22.534 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-24 11:27:22.593 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-24 11:27:22.615 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 89; maxThreads: 1000
+Mar-24 11:27:22.758 [main] DEBUG nextflow.Session - Session start
+Mar-24 11:27:22.952 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-24 11:27:24.489 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.490 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.499 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-24 11:27:24.510 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=88; memory=503.8 GB; capacity=88; pollInterval=100ms; dumpInterval=5m
+Mar-24 11:27:24.514 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-24 11:27:24.617 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROCESS` matches process TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-24 11:27:24.621 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.621 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.641 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.641 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.656 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.656 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.675 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.675 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.691 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.691 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.703 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-24 11:27:24.704 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-24 11:27:24.710 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: PREPROCESS, TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS, COMBINE_COUNTS, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ, RANDOM_FOREST, XGBOOST, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2, DESEQ2, MULTIQC, CLASSIFICATION, INFERENCE, TRANSCRIPTOMICS_CLASSIFIER:XGBOOST, TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST, FEATURE_SELECTION_PADJ, TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS, FEATURE_SELECTION_KBEST
+Mar-24 11:27:24.712 [main] DEBUG nextflow.Session - Igniting dataflow network (11)
+Mar-24 11:27:24.730 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS
+Mar-24 11:27:24.732 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-24 11:27:24.732 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2
+Mar-24 11:27:24.734 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ
+Mar-24 11:27:24.736 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
+Mar-24 11:27:24.739 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
+Mar-24 11:27:24.741 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
+Mar-24 11:27:24.744 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_15490d823b60f877: /home/bdkhoi/projects/transcriptomics_classifier/workflows/transcriptomics_classifier.nf
+  Script_f60264dde4ef9a7a: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/deseq2.nf
+  Script_bb630b9cd376b7b7: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/XGboost.nf
+  Script_83ab122c8639e6ab: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/preprocess.nf
+  Script_0665db7f591529ae: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/feature_selection_kbest.nf
+  Script_95b7f1a0d44ea0ff: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/multiqc.nf
+  Script_eac6863a441cfd4e: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/feature_selection_padj.nf
+  Script_758ed1379ba24b2e: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/inference.nf
+  Script_d9ba0c2fa2ac798c: /home/bdkhoi/projects/transcriptomics_classifier/main.nf
+  Script_83a68f039fae06dd: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/classification_model.nf
+  Script_b98e9e2832bc0059: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/random_forest.nf
+  Script_ebeeb9f5bf924eda: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/combine_counts.nf
+Mar-24 11:27:24.745 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-24 11:27:24.745 [main] DEBUG nextflow.Session - Session await
+Mar-24 11:27:24.892 [Actor Thread 25] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/opt/miniconda/envs/asthma_classifier; path=/opt/miniconda/envs/asthma_classifier
+Mar-24 11:27:25.156 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-24 11:27:25.159 [Task submitter] INFO  nextflow.Session - [09/130f8c] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV)
+Mar-24 11:27:29.475 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV); status: COMPLETED; exit: 1; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/09/130f8c864c363dbbb6ebeffd437350]
+Mar-24 11:27:29.477 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-24 11:27:29.499 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV); work-dir=/home/bdkhoi/projects/transcriptomics_classifier/work/09/130f8c864c363dbbb6ebeffd437350
+  error [nextflow.exception.ProcessFailedException]: Process `TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV)` terminated with an error exit status (1)
+Mar-24 11:27:29.532 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV)'
+
+Caused by:
+  Process `TRANSCRIPTOMICS_CLASSIFIER:COMBINE_COUNTS (HPV)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  python3 /home/bdkhoi/projects/transcriptomics_classifier/bin/merge_counts.py --human_count merged_counts_human.csv --viral_count merged_gene_counts_virus.csv
+
+Command exit status:
+  1
+
+Command output:
+                 Geneid  HPV18_2  HPV16_11  HPV16_13  HPV45_1  ...  normal_7  normal_6  normal_5  nd_6  gene_name
+  0  ENSG00000000003.14      734       687        17      241  ...       476      2306       760  1206     TSPAN6
+  1   ENSG00000000005.5        6         1         0        1  ...         2        10        14    10       TNMD
+  2  ENSG00000000419.12      295       284       378      237  ...       224       736       291   592       DPM1
+  3  ENSG00000000457.13      968       631      1356      633  ...       373      1460       573  1874      SCYL3
+  4  ENSG00000000460.16      812       639       814      488  ...       198       869       268  1657   C1orf112
+  
+  [5 rows x 54 columns]
+             Geneid  nd_13  HPV16_14  HPV33_2  HPV16_5  normal_2  ...  normal_6  normal_4  normal_7  normal_5  nd_6  gene_name
+  0  JEMAKDHI_00004      0         0        0        0         0  ...         0         0         0         0     0      env_1
+  1  JEMAKDHI_00008      0         0        0        0         0  ...         0         0         0         0     0      VP1_1
+  2  JEMAKDHI_00010      0         0        0        0         0  ...         0         0         0         0     0      VP1_2
+  3  JEMAKDHI_00012      0         0        0        0         0  ...         0         0         0         0     0      VP1_3
+  4  JEMAKDHI_00014      0         0        0        0         0  ...         0         0         0         0     0      VP1_4
+  
+  [5 rows x 54 columns]
+                 Geneid  HPV18_2  HPV16_11  HPV16_13  HPV45_1  ...  normal_7  normal_6  normal_5  nd_6  gene_name
+  0  ENSG00000000003.14      734       687        17      241  ...       476      2306       760  1206     TSPAN6
+  1   ENSG00000000005.5        6         1         0        1  ...         2        10        14    10       TNMD
+  2  ENSG00000000419.12      295       284       378      237  ...       224       736       291   592       DPM1
+  3  ENSG00000000457.13      968       631      1356      633  ...       373      1460       573  1874      SCYL3
+  4  ENSG00000000460.16      812       639       814      488  ...       198       869       268  1657   C1orf112
+  
+  [5 rows x 54 columns]
+
+Command error:
+                 Geneid  HPV18_2  HPV16_11  HPV16_13  HPV45_1  ...  normal_7  normal_6  normal_5  nd_6  gene_name
+  0  ENSG00000000003.14      734       687        17      241  ...       476      2306       760  1206     TSPAN6
+  1   ENSG00000000005.5        6         1         0        1  ...         2        10        14    10       TNMD
+  2  ENSG00000000419.12      295       284       378      237  ...       224       736       291   592       DPM1
+  3  ENSG00000000457.13      968       631      1356      633  ...       373      1460       573  1874      SCYL3
+  4  ENSG00000000460.16      812       639       814      488  ...       198       869       268  1657   C1orf112
+  
+  [5 rows x 54 columns]
+             Geneid  nd_13  HPV16_14  HPV33_2  HPV16_5  normal_2  ...  normal_6  normal_4  normal_7  normal_5  nd_6  gene_name
+  0  JEMAKDHI_00004      0         0        0        0         0  ...         0         0         0         0     0      env_1
+  1  JEMAKDHI_00008      0         0        0        0         0  ...         0         0         0         0     0      VP1_1
+  2  JEMAKDHI_00010      0         0        0        0         0  ...         0         0         0         0     0      VP1_2
+  3  JEMAKDHI_00012      0         0        0        0         0  ...         0         0         0         0     0      VP1_3
+  4  JEMAKDHI_00014      0         0        0        0         0  ...         0         0         0         0     0      VP1_4
+  
+  [5 rows x 54 columns]
+                 Geneid  HPV18_2  HPV16_11  HPV16_13  HPV45_1  ...  normal_7  normal_6  normal_5  nd_6  gene_name
+  0  ENSG00000000003.14      734       687        17      241  ...       476      2306       760  1206     TSPAN6
+  1   ENSG00000000005.5        6         1         0        1  ...         2        10        14    10       TNMD
+  2  ENSG00000000419.12      295       284       378      237  ...       224       736       291   592       DPM1
+  3  ENSG00000000457.13      968       631      1356      633  ...       373      1460       573  1874      SCYL3
+  4  ENSG00000000460.16      812       639       814      488  ...       198       869       268  1657   C1orf112
+  
+  [5 rows x 54 columns]
+  Traceback (most recent call last):
+    File "/home/bdkhoi/projects/transcriptomics_classifier/bin/merge_counts.py", line 19, in <module>
+      merge_count.drop('Geneid', inplace=True)
+      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/opt/miniconda/envs/asthma_classifier/lib/python3.13/site-packages/pandas/core/frame.py", line 5581, in drop
+      return super().drop(
+             ~~~~~~~~~~~~^
+          labels=labels,
+          ^^^^^^^^^^^^^^
+      ...<5 lines>...
+          errors=errors,
+          ^^^^^^^^^^^^^^
+      )
+      ^
+    File "/opt/miniconda/envs/asthma_classifier/lib/python3.13/site-packages/pandas/core/generic.py", line 4788, in drop
+      obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+    File "/opt/miniconda/envs/asthma_classifier/lib/python3.13/site-packages/pandas/core/generic.py", line 4859, in _drop_axis
+      raise KeyError(f"{labels} not found in axis")
+  KeyError: "['Geneid'] not found in axis"
+
+Work dir:
+  /home/bdkhoi/projects/transcriptomics_classifier/work/09/130f8c864c363dbbb6ebeffd437350
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+Mar-24 11:27:29.541 [TaskFinalizer-1] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Mar-24 11:27:29.551 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-24 11:27:29.556 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Mar-24 11:27:29.556 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-24 11:27:29.559 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Mar-24 11:27:29.568 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=8.5s; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=2; peakMemory=24 GB; ]
+Mar-24 11:27:29.780 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-24 11:27:29.840 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Mar-24 11:27:29.841 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

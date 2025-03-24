@@ -6,12 +6,7 @@ process XGBOOST {
 
     input:
     tuple val(meta), path(meta_train), path(count_train)
-    tuple val(meta), path(normalized_counts)             
-    tuple val(meta), path(deseq2_results)
     tuple val(meta), path(meta_test), path(count_test)   
-
-    output:
-    tuple val(meta), path("*")
     
     script:
     """

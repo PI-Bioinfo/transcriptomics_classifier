@@ -1,46 +1,57 @@
-include { PREPROCESS                            } from "${projectDir}/modules/local/preprocess.nf"
-include { COMBINE_VIRAL                         } from "${projectDir}/modules/local/combine_viral.nf"
+include { PREPROCESS                                              } from "${projectDir}/modules/local/preprocess.nf"
+include { COMBINE_COUNTS                                          } from "${projectDir}/modules/local/combine_counts.nf"
 
-include { DESEQ2                                } from "${projectDir}/modules/local/deseq2.nf"
-include { FEATURE_SELECTION_PADJ                } from "${projectDir}/modules/local/feature_selection_padj.nf"
-include { FEATURE_SELECTION_KBEST               } from "${projectDir}/modules/local/feature_selection_kbest.nf"
-include { CLASSIFICATION                        } from "${projectDir}/modules/local/classification_model.nf"
-include { RANDOM_FOREST                         } from "${projectDir}/modules/local/random_forest.nf"
-include { XGBOOST                               } from "${projectDir}/modules/local/XGboost.nf"
-include { INFERENCE                             } from "${projectDir}/modules/local/inference.nf"
-include { MULTIQC                               } from "${projectDir}/modules/local/multiqc.nf"
+include { DESEQ2 as DESEQ2_HUMAN                                  } from "${projectDir}/modules/local/deseq2.nf"
+include { DESEQ2 as DESEQ2_VIRAL                                  } from "${projectDir}/modules/local/deseq2.nf"
+
+include { FEATURE_SELECTION_PADJ as FEATURE_SELECTION_PADJ_HUMAN  } from "${projectDir}/modules/local/feature_selection_padj.nf"
+include { FEATURE_SELECTION_PADJ as FEATURE_SELECTION_PADJ_VIRAL  } from "${projectDir}/modules/local/feature_selection_padj.nf"
+
+include { CLASSIFICATION                                          } from "${projectDir}/modules/local/classification_model.nf"
+include { RANDOM_FOREST                                           } from "${projectDir}/modules/local/random_forest.nf"
+include { XGBOOST                                                 } from "${projectDir}/modules/local/XGboost.nf"
+include { INFERENCE                                               } from "${projectDir}/modules/local/inference.nf"
+include { MULTIQC                                                 } from "${projectDir}/modules/local/multiqc.nf"
 
 workflow TRANSCRIPTOMICS_CLASSIFIER {
     // Loading channels
-    ch_meta             = Channel.of(params.meta)
-    ch_metadata         = ch_meta.combine(Channel.fromPath(params.metadata))
-    ch_countdata        = ch_meta.combine(Channel.fromPath(params.countdata))
-
-    ch_validation_set   = Channel.fromPath(params.validation_design)
-    ch_validation_set
-            | splitCsv(header: true)
-            | map ( row -> tuple(row["sample"], 
-                row["path"] + "/" + row["sample"] + "_metadata.csv", 
-                row["path"] + "/" + row["sample"] + "_cleandata.csv") )
-            | set { ch_validation_set }
-
-    
+    ch_meta                 = Channel.of(params.meta)
+    ch_metadata             = ch_meta.combine(Channel.fromPath(params.design, checkIfExists: true))
+    ch_human_countdata      = ch_meta.combine(Channel.fromPath(params.human_countdata, checkIfExists: true))
+    ch_viral_countdata      = ch_meta.combine(Channel.fromPath(params.viral_countdata, checkIfExists: true))
 
     // Splitting train & test
     PREPROCESS(
         ch_metadata,
-        ch_countdata
+        ch_human_countdata,
+        ch_viral_countdata
     )
     
-    DESEQ2(
-        PREPROCESS.out.train_set
+    DESEQ2_HUMAN(
+        PREPROCESS.out.human_train_set
+    )
+
+    DESEQ2_VIRAL(
+        PREPROCESS.out.viral_train_set
     )
 
     // Features selection
-    FEATURE_SELECTION_PADJ(
-        PREPROCESS.out.train_set,
-        DESEQ2.out.normalized_counts,
-        DESEQ2.out.deseq2_results
+    FEATURE_SELECTION_PADJ_HUMAN(
+        PREPROCESS.out.human_train_set,
+        DESEQ2_HUMAN.out.normalized_counts,
+        DESEQ2_HUMAN.out.deseq2_results
+    )
+
+    FEATURE_SELECTION_PADJ_VIRAL(
+        PREPROCESS.out.viral_train_set,
+        DESEQ2_VIRAL.out.normalized_counts,
+        DESEQ2_VIRAL.out.deseq2_results
+    )
+
+    // Combining counts
+    COMBINE_COUNTS(
+        DESEQ2_HUMAN.out.normalized_counts,
+        DESEQ2_VIRAL.out.normalized_counts
     )
 
     // Classification
@@ -52,22 +63,18 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
     )
     XGBOOST(
         PREPROCESS.out.train_set,
-        DESEQ2.out.normalized_counts,
-        DESEQ2.out.deseq2_results,
         PREPROCESS.out.test_set
     )
     RANDOM_FOREST(
         PREPROCESS.out.train_set,
-        DESEQ2.out.normalized_counts,
-        DESEQ2.out.deseq2_results,
         PREPROCESS.out.test_set
     )
 
     // Inference on unseen data
-    INFERENCE(
-        ch_validation_set,
-        CLASSIFICATION.out.selected_features.first(),
-        CLASSIFICATION.out.coef_matrix.first()
-    )
+    // INFERENCE(
+    //     ch_inference_set,
+    //     CLASSIFICATION.out.selected_features.first(),
+    //     CLASSIFICATION.out.coef_matrix.first()
+    // )
     
 }
