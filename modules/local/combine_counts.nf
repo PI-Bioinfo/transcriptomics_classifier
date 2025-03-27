@@ -4,11 +4,12 @@ process COMBINE_COUNTS {
     conda '/opt/miniconda/envs/asthma_classifier'
 
     input:
-    tuple val(meta), path(human_count)
-    tuple val(meta), path(viral_count)
+    val meta
+    tuple val(meta_human), path(human_count)
+    tuple val(meta_viral), path(viral_count)
 
     output:
-    tuple val(meta), path("merged_count.csv"),       emit: merged_counts 
+    tuple val(meta), path("*merged_count.csv"),       emit: merged
 
     script:
     """

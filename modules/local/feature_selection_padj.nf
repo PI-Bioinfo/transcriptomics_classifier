@@ -27,8 +27,7 @@ process FEATURE_SELECTION_PADJ {
     meta_train <- read.csv("${meta_train}", row.names=1)
     count_train <- read.csv("${count_train}", row.names=1)
 
-    # meta_train\$Sex <- as.factor(meta_train\$Sex)
-    deseq2_results <- deseq2_results[order(deseq2_results\$padj), ]
+    deseq2_results <- deseq2_results[order(deseq2_results\$log2FoldChange), ]
 
     # Selecting top genes from p-adj
     top_genes <- rownames(deseq2_results)[1:1000]

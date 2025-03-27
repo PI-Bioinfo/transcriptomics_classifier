@@ -31,7 +31,7 @@ process RANDOM_FOREST {
     model = RandomForestClassifier(
         n_estimators=50, 
         max_depth=5, 
-        random_state=42
+        random_state=42,
     )
     model.fit(X_train, y_train)
     cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring="accuracy")
