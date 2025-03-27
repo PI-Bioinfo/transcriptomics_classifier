@@ -1,105 +1,113 @@
-Mar-27 12:04:44.226 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --meta HPV --outdir result/ --data_type human --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_design.csv --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_human_counts.csv --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_viral_counts.csv -resume
-Mar-27 12:04:44.561 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
-Mar-27 12:04:44.589 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bdkhoi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
-Mar-27 12:04:44.607 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Mar-27 12:04:44.608 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Mar-27 12:04:44.613 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Mar-27 12:04:44.629 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Mar-27 12:04:44.662 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
-Mar-27 12:04:44.666 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
-Mar-27 12:04:44.698 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bdkhoi/.nextflow/secrets/store.json
-Mar-27 12:04:44.702 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@3e7dfd44] - activable => nextflow.secret.LocalSecretsProvider@3e7dfd44
-Mar-27 12:04:44.721 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Mar-27 12:04:45.603 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
-Mar-27 12:04:45.621 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [nauseous_chandrasekhar] DSL2 - revision: 47116a1ec3
-Mar-27 12:04:45.623 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Mar-27 12:04:45.623 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Mar-27 12:04:45.687 [main] DEBUG nextflow.Session - Session UUID: ad77a6f0-94c4-4cd6-ac70-67a9452598ea
-Mar-27 12:04:45.687 [main] DEBUG nextflow.Session - Run name: nauseous_chandrasekhar
-Mar-27 12:04:45.688 [main] DEBUG nextflow.Session - Executor pool size: 88
-Mar-27 12:04:45.698 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Mar-27 12:04:45.706 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Mar-27 12:04:45.732 [main] DEBUG nextflow.cli.CmdRun - 
+Mar-27 14:15:18.976 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --meta HPV --outdir result/ --data_type viral --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_design.csv --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_human_counts.csv --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_viral_counts.csv -resume
+Mar-27 14:15:19.324 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Mar-27 14:15:19.352 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bdkhoi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Mar-27 14:15:19.371 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-27 14:15:19.372 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-27 14:15:19.376 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-27 14:15:19.394 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-27 14:15:19.425 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-27 14:15:19.429 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-27 14:15:19.464 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bdkhoi/.nextflow/secrets/store.json
+Mar-27 14:15:19.468 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@3e7dfd44] - activable => nextflow.secret.LocalSecretsProvider@3e7dfd44
+Mar-27 14:15:19.485 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-27 14:15:20.349 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Mar-27 14:15:20.367 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [sad_payne] DSL2 - revision: 47116a1ec3
+Mar-27 14:15:20.369 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-27 14:15:20.369 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-27 14:15:20.434 [main] DEBUG nextflow.Session - Session UUID: ad77a6f0-94c4-4cd6-ac70-67a9452598ea
+Mar-27 14:15:20.435 [main] DEBUG nextflow.Session - Run name: sad_payne
+Mar-27 14:15:20.435 [main] DEBUG nextflow.Session - Executor pool size: 88
+Mar-27 14:15:20.445 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-27 14:15:20.453 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:15:20.481 [main] DEBUG nextflow.cli.CmdRun - 
   Version: 24.10.4 build 5934
   Created: 20-01-2025 16:47 UTC (23:47 ICST)
   System: Linux 6.8.0-52-generic
   Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
   Encoding: UTF-8 (UTF-8)
-  Process: 696838@hpc02 [127.0.1.1]
+  Process: 709478@hpc02 [127.0.1.1]
   CPUs: 88 - Mem: 503.8 GB (470.5 GB) - Swap: 2 GB (2 GB)
-Mar-27 12:04:45.813 [main] DEBUG nextflow.Session - Work-dir: /home/bdkhoi/projects/transcriptomics_classifier/work [ext2/ext3]
-Mar-27 12:04:45.852 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Mar-27 12:04:45.867 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Mar-27 12:04:45.910 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Mar-27 12:04:45.929 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 89; maxThreads: 1000
-Mar-27 12:04:46.098 [main] DEBUG nextflow.Session - Session start
-Mar-27 12:04:46.239 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Mar-27 12:04:47.392 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROCESS` matches process TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
-Mar-27 12:04:47.417 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.418 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.426 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Mar-27 12:04:47.434 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=88; memory=503.8 GB; capacity=88; pollInterval=100ms; dumpInterval=5m
-Mar-27 12:04:47.438 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Mar-27 12:04:47.533 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
-Mar-27 12:04:47.542 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.542 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.558 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
-Mar-27 12:04:47.562 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.563 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.579 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
-Mar-27 12:04:47.582 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.582 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.592 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
-Mar-27 12:04:47.595 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.595 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.617 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
-Mar-27 12:04:47.621 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.621 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.632 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
-Mar-27 12:04:47.633 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.633 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.646 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
-Mar-27 12:04:47.647 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Mar-27 12:04:47.648 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Mar-27 12:04:47.654 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FEATURE_SELECTION_PADJ_VIRAL, PREPROCESS, COMBINE_COUNTS, DESEQ2_HUMAN, RANDOM_FOREST, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN, XGBOOST, DESEQ2, MULTIQC, CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN, INFERENCE, TRANSCRIPTOMICS_CLASSIFIER:XGBOOST, TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST, FEATURE_SELECTION_PADJ, DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS, FEATURE_SELECTION_PADJ_HUMAN
-Mar-27 12:04:47.656 [main] DEBUG nextflow.Session - Igniting dataflow network (12)
-Mar-27 12:04:47.677 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
-Mar-27 12:04:47.678 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
-Mar-27 12:04:47.685 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
-Mar-27 12:04:47.687 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
-Mar-27 12:04:47.688 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
-Mar-27 12:04:47.689 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
-Mar-27 12:04:47.690 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
-Mar-27 12:04:47.691 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
-Mar-27 12:04:47.696 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+Mar-27 14:15:20.576 [main] DEBUG nextflow.Session - Work-dir: /home/bdkhoi/projects/transcriptomics_classifier/work [ext2/ext3]
+Mar-27 14:15:20.617 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-27 14:15:20.630 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-27 14:15:20.669 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-27 14:15:20.683 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 89; maxThreads: 1000
+Mar-27 14:15:20.795 [main] DEBUG nextflow.Session - Session start
+Mar-27 14:15:20.925 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-27 14:15:22.037 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROCESS` matches process TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-27 14:15:22.061 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.062 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.070 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-27 14:15:22.078 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=88; memory=503.8 GB; capacity=88; pollInterval=100ms; dumpInterval=5m
+Mar-27 14:15:22.081 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-27 14:15:22.174 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
+Mar-27 14:15:22.182 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.182 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.196 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
+Mar-27 14:15:22.200 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.200 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.230 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
+Mar-27 14:15:22.232 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.232 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.246 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:15:22.250 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.250 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.276 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
+Mar-27 14:15:22.279 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.279 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.291 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
+Mar-27 14:15:22.293 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.293 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.306 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
+Mar-27 14:15:22.307 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:15:22.308 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:15:22.314 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FEATURE_SELECTION_PADJ_VIRAL, PREPROCESS, COMBINE_COUNTS, DESEQ2_HUMAN, RANDOM_FOREST, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN, XGBOOST, DESEQ2, MULTIQC, CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN, INFERENCE, TRANSCRIPTOMICS_CLASSIFIER:XGBOOST, TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST, FEATURE_SELECTION_PADJ, DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS, FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:15:22.315 [main] DEBUG nextflow.Session - Igniting dataflow network (12)
+Mar-27 14:15:22.333 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-27 14:15:22.333 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
+Mar-27 14:15:22.335 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
+Mar-27 14:15:22.342 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
+Mar-27 14:15:22.345 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:15:22.349 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
+Mar-27 14:15:22.350 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
+Mar-27 14:15:22.354 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
+Mar-27 14:15:22.357 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
   Script_5ca916482e9e0e12: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/XGboost.nf
   Script_9491fee9bbf54d6f: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/inference.nf
-  Script_03eac4029c304af8: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/feature_selection_padj.nf
   Script_608cb407b0bd8205: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/preprocess.nf
   Script_95b7f1a0d44ea0ff: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/multiqc.nf
   Script_50d854d268591297: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/random_forest.nf
   Script_9a0a3ee345d4bafd: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/deseq2.nf
-  Script_4255df6a38a9ca65: /home/bdkhoi/projects/transcriptomics_classifier/workflows/transcriptomics_classifier.nf
+  Script_e9b45b22f38c11b7: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/feature_selection_padj.nf
   Script_5d2183696bea02c5: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/combine_counts.nf
+  Script_30a17d7752b79a61: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/classification_model.nf
   Script_d9ba0c2fa2ac798c: /home/bdkhoi/projects/transcriptomics_classifier/main.nf
-  Script_8e4f3aa7253d119c: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/classification_model.nf
-Mar-27 12:04:47.697 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Mar-27 12:04:47.697 [main] DEBUG nextflow.Session - Session await
-Mar-27 12:04:47.866 [Actor Thread 25] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/opt/miniconda/envs/asthma_classifier; path=/opt/miniconda/envs/asthma_classifier
-Mar-27 12:04:48.008 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [f4/b6a92c] Cached process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS (HPV)
-Mar-27 12:04:48.088 [Actor Thread 39] INFO  nextflow.processor.TaskProcessor - [27/f839c5] Cached process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST (HPV)
-Mar-27 12:04:48.088 [Actor Thread 44] INFO  nextflow.processor.TaskProcessor - [18/f06676] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL (HPV)
-Mar-27 12:04:48.089 [Actor Thread 40] INFO  nextflow.processor.TaskProcessor - [0d/967735] Cached process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST (HPV)
-Mar-27 12:04:48.109 [Actor Thread 38] INFO  nextflow.processor.TaskProcessor - [5b/1843e2] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN (HPV)
-Mar-27 12:04:48.126 [Actor Thread 57] INFO  nextflow.processor.TaskProcessor - [84/a711db] Cached process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)
-Mar-27 12:04:48.130 [Actor Thread 44] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Mar-27 12:04:48.157 [Actor Thread 63] INFO  nextflow.processor.TaskProcessor - [cb/f6f4a8] Cached process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV)
-Mar-27 12:04:48.199 [Actor Thread 71] INFO  nextflow.processor.TaskProcessor - [52/c2a4a6] Cached process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION (HPV)
-Mar-27 12:04:48.211 [main] DEBUG nextflow.Session - Session await > all processes finished
-Mar-27 12:04:48.257 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Mar-27 12:04:48.257 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Mar-27 12:04:48.265 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
-Mar-27 12:04:48.277 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=8; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=8m 28s;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
-Mar-27 12:04:48.381 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Mar-27 12:04:48.467 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Mar-27 12:04:48.469 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Script_b1ca079e525bafca: /home/bdkhoi/projects/transcriptomics_classifier/workflows/transcriptomics_classifier.nf
+Mar-27 14:15:22.357 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-27 14:15:22.357 [main] DEBUG nextflow.Session - Session await
+Mar-27 14:15:22.516 [Actor Thread 25] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/opt/miniconda/envs/asthma_classifier; path=/opt/miniconda/envs/asthma_classifier
+Mar-27 14:15:22.652 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [f4/b6a92c] Cached process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS (HPV)
+Mar-27 14:15:22.724 [Actor Thread 43] INFO  nextflow.processor.TaskProcessor - [18/f06676] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL (HPV)
+Mar-27 14:15:22.727 [Actor Thread 41] INFO  nextflow.processor.TaskProcessor - [17/ffe2cf] Cached process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST (HPV)
+Mar-27 14:15:22.728 [Actor Thread 44] INFO  nextflow.processor.TaskProcessor - [a2/472a09] Cached process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST (HPV)
+Mar-27 14:15:22.737 [Actor Thread 36] INFO  nextflow.processor.TaskProcessor - [5b/1843e2] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN (HPV)
+Mar-27 14:15:22.776 [Actor Thread 43] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:15:22.856 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-27 14:15:22.859 [Task submitter] INFO  nextflow.Session - [e5/cb6f14] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV)
+Mar-27 14:15:22.881 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-27 14:15:22.882 [Task submitter] INFO  nextflow.Session - [e4/84e57d] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)
+Mar-27 14:15:28.886 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV); status: COMPLETED; exit: 0; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/e4/84e57db2f414e056857b462c02f044]
+Mar-27 14:15:28.888 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:15:28.933 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-27 14:15:28.934 [Task submitter] INFO  nextflow.Session - [3d/3c6426] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION (HPV)
+Mar-27 14:15:34.079 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV); status: COMPLETED; exit: 0; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/e5/cb6f14b41485dc2b4ca7220a926deb]
+Mar-27 14:15:35.379 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION (HPV); status: COMPLETED; exit: 0; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/3d/3c64262938ce1aaf567b7da90ac373]
+Mar-27 14:15:35.402 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-27 14:15:35.479 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Mar-27 14:15:35.480 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-27 14:15:35.486 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Mar-27 14:15:35.488 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Mar-27 14:15:35.502 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=0; ignoredCount=0; cachedCount=5; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=47.1s; failedDuration=0ms; cachedDuration=4m 55s;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=4; peakMemory=48 GB; ]
+Mar-27 14:15:35.535 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-27 14:15:35.611 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Mar-27 14:15:35.612 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

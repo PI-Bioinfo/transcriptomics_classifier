@@ -10,7 +10,7 @@ process FEATURE_SELECTION_PADJ {
 
     output:
     tuple val(meta), path("*top_genes.csv")                   , optional: true, emit: top_genes
-    tuple val(meta), path("*count_train.csv")                 , optional: true, emit: count_train
+    tuple val(meta), path("*norm_train_count.csv")            , optional: true, emit: norm_train_count
 
     script:
     """
@@ -23,6 +23,7 @@ process FEATURE_SELECTION_PADJ {
     # Loading data
     normalized_counts <- read.csv("${normalized_counts}", row.names=1)
     deseq2_results <- read.csv("${deseq2_results}", row.names=1)
+
     meta_train <- read.csv("${meta_train}", row.names=1)
     count_train <- read.csv("${count_train}", row.names=1)
 
@@ -31,11 +32,11 @@ process FEATURE_SELECTION_PADJ {
 
     # Selecting top genes from p-adj
     top_genes <- rownames(deseq2_results)[1:1000]
-    train_counts <- normalized_counts[top_genes, rownames(meta_train)]
-    count_train <- count_train[top_genes, rownames(meta_train)]
+    top_genes <- top_genes[!is.na(top_genes)]
+    norm_train_count <- normalized_counts[top_genes, rownames(meta_train)]
 
     # Exporting signatures
     write.csv(top_genes, "${meta}_top_genes.csv")
-    write.csv(count_train, "${meta}_count_train.csv")
+    write.csv(norm_train_count, "${meta}_norm_train_count.csv")
     """
 }

@@ -1,128 +1,165 @@
-Mar-27 12:03:55.340 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --meta HPV --outdir result/ --data_type human --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_design.csv --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_human_counts.csv --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_viral_counts.csv -resume
-Mar-27 12:03:55.669 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
-Mar-27 12:03:55.696 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bdkhoi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
-Mar-27 12:03:55.714 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Mar-27 12:03:55.716 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Mar-27 12:03:55.720 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
-Mar-27 12:03:55.736 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Mar-27 12:03:55.767 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
-Mar-27 12:03:55.770 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
-Mar-27 12:03:55.801 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bdkhoi/.nextflow/secrets/store.json
-Mar-27 12:03:55.805 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@3e7dfd44] - activable => nextflow.secret.LocalSecretsProvider@3e7dfd44
-Mar-27 12:03:55.821 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Mar-27 12:03:56.625 [main] ERROR nextflow.cli.Launcher - Unable to parse config file: '/home/bdkhoi/projects/transcriptomics_classifier/nextflow.config'
+Mar-27 14:12:45.290 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --meta HPV --outdir result/ --data_type viral --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_design.csv --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_human_counts.csv --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/clean_viral_counts.csv -resume
+Mar-27 14:12:45.656 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Mar-27 14:12:45.687 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/bdkhoi/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Mar-27 14:12:45.709 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-27 14:12:45.711 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-27 14:12:45.715 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-27 14:12:45.733 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-27 14:12:45.763 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-27 14:12:45.766 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/bdkhoi/projects/transcriptomics_classifier/nextflow.config
+Mar-27 14:12:45.796 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/bdkhoi/.nextflow/secrets/store.json
+Mar-27 14:12:45.801 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@3e7dfd44] - activable => nextflow.secret.LocalSecretsProvider@3e7dfd44
+Mar-27 14:12:45.816 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-27 14:12:46.700 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Mar-27 14:12:46.719 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [wise_mandelbrot] DSL2 - revision: 47116a1ec3
+Mar-27 14:12:46.722 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-27 14:12:46.722 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-27 14:12:46.787 [main] DEBUG nextflow.Session - Session UUID: ad77a6f0-94c4-4cd6-ac70-67a9452598ea
+Mar-27 14:12:46.788 [main] DEBUG nextflow.Session - Run name: wise_mandelbrot
+Mar-27 14:12:46.789 [main] DEBUG nextflow.Session - Executor pool size: 88
+Mar-27 14:12:46.800 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-27 14:12:46.807 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:12:46.836 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.4 build 5934
+  Created: 20-01-2025 16:47 UTC (23:47 ICST)
+  System: Linux 6.8.0-52-generic
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 11.0.13+7-b1751.21
+  Encoding: UTF-8 (UTF-8)
+  Process: 707109@hpc02 [127.0.1.1]
+  CPUs: 88 - Mem: 503.8 GB (470.5 GB) - Swap: 2 GB (2 GB)
+Mar-27 14:12:46.926 [main] DEBUG nextflow.Session - Work-dir: /home/bdkhoi/projects/transcriptomics_classifier/work [ext2/ext3]
+Mar-27 14:12:46.967 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-27 14:12:46.981 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-27 14:12:47.023 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-27 14:12:47.050 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 89; maxThreads: 1000
+Mar-27 14:12:47.156 [main] DEBUG nextflow.Session - Session start
+Mar-27 14:12:47.301 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-27 14:12:48.396 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROCESS` matches process TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-27 14:12:48.420 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.420 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.428 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-27 14:12:48.437 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=88; memory=503.8 GB; capacity=88; pollInterval=100ms; dumpInterval=5m
+Mar-27 14:12:48.440 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Mar-27 14:12:48.528 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
+Mar-27 14:12:48.537 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.538 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.550 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
+Mar-27 14:12:48.556 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.556 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.586 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
+Mar-27 14:12:48.588 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.588 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.600 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:12:48.603 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.604 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.626 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
+Mar-27 14:12:48.629 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.630 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.640 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
+Mar-27 14:12:48.641 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.642 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.655 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:DESEQ2|CLASSIFICATION|FEATURE_SELECTION_PADJ|XGBOOST|RANDOM_FOREST` matches process TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
+Mar-27 14:12:48.657 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-27 14:12:48.657 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-27 14:12:48.664 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: FEATURE_SELECTION_PADJ_VIRAL, PREPROCESS, COMBINE_COUNTS, DESEQ2_HUMAN, RANDOM_FOREST, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN, XGBOOST, DESEQ2, MULTIQC, CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN, INFERENCE, TRANSCRIPTOMICS_CLASSIFIER:XGBOOST, TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION, TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST, FEATURE_SELECTION_PADJ, DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL, TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS, FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:12:48.666 [main] DEBUG nextflow.Session - Igniting dataflow network (12)
+Mar-27 14:12:48.682 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS
+Mar-27 14:12:48.684 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN
+Mar-27 14:12:48.684 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL
+Mar-27 14:12:48.687 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL
+Mar-27 14:12:48.689 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN
+Mar-27 14:12:48.693 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:CLASSIFICATION
+Mar-27 14:12:48.695 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST
+Mar-27 14:12:48.697 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST
+Mar-27 14:12:48.701 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_5ca916482e9e0e12: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/XGboost.nf
+  Script_9491fee9bbf54d6f: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/inference.nf
+  Script_608cb407b0bd8205: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/preprocess.nf
+  Script_95b7f1a0d44ea0ff: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/multiqc.nf
+  Script_50d854d268591297: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/random_forest.nf
+  Script_9a0a3ee345d4bafd: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/deseq2.nf
+  Script_51fba69325b842cd: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/feature_selection_padj.nf
+  Script_5d2183696bea02c5: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/combine_counts.nf
+  Script_30a17d7752b79a61: /home/bdkhoi/projects/transcriptomics_classifier/modules/local/classification_model.nf
+  Script_d9ba0c2fa2ac798c: /home/bdkhoi/projects/transcriptomics_classifier/main.nf
+  Script_b1ca079e525bafca: /home/bdkhoi/projects/transcriptomics_classifier/workflows/transcriptomics_classifier.nf
+Mar-27 14:12:48.702 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-27 14:12:48.702 [main] DEBUG nextflow.Session - Session await
+Mar-27 14:12:48.860 [Actor Thread 25] DEBUG nextflow.conda.CondaCache - conda found local env for environment=/opt/miniconda/envs/asthma_classifier; path=/opt/miniconda/envs/asthma_classifier
+Mar-27 14:12:49.014 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [f4/b6a92c] Cached process > TRANSCRIPTOMICS_CLASSIFIER:PREPROCESS (HPV)
+Mar-27 14:12:49.086 [Actor Thread 39] INFO  nextflow.processor.TaskProcessor - [18/f06676] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_VIRAL (HPV)
+Mar-27 14:12:49.093 [Actor Thread 42] INFO  nextflow.processor.TaskProcessor - [17/ffe2cf] Cached process > TRANSCRIPTOMICS_CLASSIFIER:RANDOM_FOREST (HPV)
+Mar-27 14:12:49.094 [Actor Thread 44] INFO  nextflow.processor.TaskProcessor - [a2/472a09] Cached process > TRANSCRIPTOMICS_CLASSIFIER:XGBOOST (HPV)
+Mar-27 14:12:49.106 [Actor Thread 33] INFO  nextflow.processor.TaskProcessor - [5b/1843e2] Cached process > TRANSCRIPTOMICS_CLASSIFIER:DESEQ2_HUMAN (HPV)
+Mar-27 14:12:49.132 [Actor Thread 33] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:12:49.221 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-27 14:12:49.226 [Task submitter] INFO  nextflow.Session - [64/a3db1c] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)
+Mar-27 14:12:49.246 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-27 14:12:49.251 [Task submitter] INFO  nextflow.Session - [65/f777bc] Submitted process > TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV)
+Mar-27 14:12:55.308 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV); status: COMPLETED; exit: 1; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/64/a3db1cf33c994f553cb19f893f7016]
+Mar-27 14:12:55.310 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=264; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Mar-27 14:12:55.332 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV); work-dir=/home/bdkhoi/projects/transcriptomics_classifier/work/64/a3db1cf33c994f553cb19f893f7016
+  error [nextflow.exception.ProcessFailedException]: Process `TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)` terminated with an error exit status (1)
+Mar-27 14:12:55.374 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)'
 
-  No signature of method: groovy.util.ConfigObject.or() is applicable for argument types: (ConfigObject) values: [[:]]
-  Possible solutions: sort(), is(java.lang.Object), sort(groovy.lang.Closure), sort(java.util.Comparator), any(), grep()
+Caused by:
+  Process `TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_VIRAL (HPV)` terminated with an error exit status (1)
 
-groovy.lang.MissingMethodException: No signature of method: groovy.util.ConfigObject.or() is applicable for argument types: (ConfigObject) values: [[:]]
-Possible solutions: sort(), is(java.lang.Object), sort(groovy.lang.Closure), sort(java.util.Comparator), any(), grep()
-	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.unwrap(ScriptBytecodeAdapter.java:72)
-	at org.codehaus.groovy.vmplugin.v8.IndyGuardsFiltersAndSignatures.unwrap(IndyGuardsFiltersAndSignatures.java:163)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script532E8FDC43FFEC6BF90988774E5E31F8$_run_closure1.doCall(Script532E8FDC43FFEC6BF90988774E5E31F8:3)
-	at Script532E8FDC43FFEC6BF90988774E5E31F8$_run_closure1.doCall(Script532E8FDC43FFEC6BF90988774E5E31F8)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:279)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigParser$_parse_closure5.doCall(ConfigParser.groovy:436)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:88)
-	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1140)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.DelegatingMetaClass.invokeMethod(DelegatingMetaClass.java:165)
-	at groovy.lang.DelegatingMetaClass.invokeMethod(DelegatingMetaClass.java:165)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.selectMethod(IndyInterface.java:355)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBase$_includeConfig_closure2.doCall(ConfigBase.groovy:124)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:88)
-	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1140)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at Script532E8FDC43FFEC6BF90988774E5E31F8.run(Script532E8FDC43FFEC6BF90988774E5E31F8:1)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethodClosure(MetaClassImpl.java:1017)
-	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1207)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.Closure.call(Closure.java:433)
-	at groovy.lang.Closure.call(Closure.java:412)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.selectMethod(IndyInterface.java:355)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBase.includeConfig(ConfigBase.groovy:125)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.selectMethod(IndyInterface.java:355)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigParser$_parse_closure5.doCall(ConfigParser.groovy:457)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:88)
-	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1140)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.DelegatingMetaClass.invokeMethod(DelegatingMetaClass.java:165)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at _nf_config_4fe00782.run(_nf_config_4fe00782:18)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigParser$_parse_closure5.doCall(ConfigParser.groovy:457)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaMethod.invoke(ClosureMetaMethod.java:88)
-	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1140)
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
-	at groovy.lang.DelegatingMetaClass.invokeMethod(DelegatingMetaClass.java:165)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigParser.parse(ConfigParser.groovy:486)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigParser.parse(ConfigParser.groovy:312)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.parse0(ConfigBuilder.groovy:439)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.merge0(ConfigBuilder.groovy:425)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.buildConfig0(ConfigBuilder.groovy:375)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.buildGivenFiles(ConfigBuilder.groovy:320)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.buildConfigObject(ConfigBuilder.groovy:818)
-	at org.codehaus.groovy.vmplugin.v8.IndyInterface.fromCache(IndyInterface.java:321)
-	at nextflow.config.ConfigBuilder.build(ConfigBuilder.groovy:831)
-	at nextflow.cli.CmdRun.run(CmdRun.groovy:332)
-	at nextflow.cli.Launcher.run(Launcher.groovy:503)
-	at nextflow.cli.Launcher.main(Launcher.groovy:658)
+
+Command executed:
+
+  #!/usr/bin/env Rscript
+  suppressMessages(library(caret))
+  suppressMessages(library(pROC))
+  suppressMessages(library(ggplot2))
+  suppressMessages(library(glmnet))
+  
+  # Loading data
+  normalized_counts <- read.csv("HPV_normalized_counts.csv", row.names=1)
+  deseq2_results <- read.csv("HPV_DESeq_results.csv", row.names=1)
+  
+  meta_train <- read.csv("meta_train.csv", row.names=1)
+  count_train <- read.csv("viral_count_train.csv", row.names=1)
+  
+  # meta_train$Sex <- as.factor(meta_train$Sex)
+  deseq2_results <- deseq2_results[order(deseq2_results$padj), ]
+  
+  # Selecting top genes from p-adj
+  top_genes <- rownames(deseq2_results)[1:1000]
+  top_genes <- top_genes[complete.cases(top_genes), ]
+  norm_train_count <- normalized_counts[top_genes, rownames(meta_train)]
+  
+  # Exporting signatures
+  write.csv(top_genes, "HPV_top_genes.csv")
+  write.csv(norm_train_count, "HPV_norm_train_count.csv")
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  Error in top_genes[complete.cases(top_genes), ] : 
+    incorrect number of dimensions
+  Execution halted
+
+Work dir:
+  /home/bdkhoi/projects/transcriptomics_classifier/work/64/a3db1cf33c994f553cb19f893f7016
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Mar-27 14:12:55.386 [TaskFinalizer-1] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Mar-27 14:12:55.394 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-27 14:13:00.143 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV); status: COMPLETED; exit: 1; error: -; workDir: /home/bdkhoi/projects/transcriptomics_classifier/work/65/f777bc4b052b785727a4d0c54751fe]
+Mar-27 14:13:00.145 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Mar-27 14:13:00.146 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-27 14:13:00.147 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV); work-dir=/home/bdkhoi/projects/transcriptomics_classifier/work/65/f777bc4b052b785727a4d0c54751fe
+  error [nextflow.exception.ProcessFailedException]: Process `TRANSCRIPTOMICS_CLASSIFIER:FEATURE_SELECTION_PADJ_HUMAN (HPV)` terminated with an error exit status (1)
+Mar-27 14:13:00.153 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Mar-27 14:13:00.156 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Mar-27 14:13:00.170 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=2; ignoredCount=0; cachedCount=5; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=33.8s; cachedDuration=4m 55s;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=4; peakMemory=48 GB; ]
+Mar-27 14:13:00.223 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-27 14:13:00.300 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Mar-27 14:13:00.301 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

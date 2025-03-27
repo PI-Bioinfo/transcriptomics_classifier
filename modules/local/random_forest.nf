@@ -45,7 +45,6 @@ process RANDOM_FOREST {
     print(f"Cross-validation accuracy: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"ROC-AUC Score: {roc_auc:.4f}")
-
     """
 
 }

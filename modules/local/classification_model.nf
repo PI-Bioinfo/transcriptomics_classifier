@@ -5,7 +5,7 @@ process CLASSIFICATION {
 
     input:
     tuple val(meta), path(top_genes)             
-    tuple val(meta), path(count_train)
+    tuple val(meta), path(norm_train_count)
     tuple val(meta), path(meta_train), path(count_train)
     tuple val(meta), path(meta_test), path(count_test)   
 
@@ -24,9 +24,11 @@ process CLASSIFICATION {
     suppressMessages(library(glmnet))
 
     # Loading data
-    top_genes <- read.csv("${top_genes}", row.names=1)
+    top_genes <- read.csv("${top_genes}")
+
     meta_train <- read.csv("${meta_train}", row.names=1)
-    count_train <- read.csv("${count_train}", row.names=1)
+    count_train <- read.csv("${norm_train_count}", row.names=1)
+
     meta_test <- read.csv("${meta_test}", row.names=1)
     count_test <- read.csv("${count_test}", row.names=1)
 
@@ -37,7 +39,6 @@ process CLASSIFICATION {
     X <- as.matrix(t(count_train))
     y <- factor(meta_train\$group, levels = c("normal", "cancer"))
     y <- as.numeric(y) - 1
-    # X <- cbind(X, Age = as.numeric(meta_train\$Age), Sex = as.numeric(meta_train\$Sex) - 1)
 
     # Performing Lasso regression
     cv_lasso <- cv.glmnet(X, y, family = "binomial", alpha = 1, nfolds = 10)

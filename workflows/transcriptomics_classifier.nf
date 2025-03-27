@@ -51,7 +51,7 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
 
         CLASSIFICATION(
             FEATURE_SELECTION_PADJ_VIRAL.out.top_genes,
-            FEATURE_SELECTION_PADJ_VIRAL.out.count_train,
+            FEATURE_SELECTION_PADJ_VIRAL.out.norm_train_count,
             PREPROCESS.out.viral_train_set,
             PREPROCESS.out.viral_test_set
         )
@@ -72,7 +72,7 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
 
         CLASSIFICATION(
             FEATURE_SELECTION_PADJ_HUMAN.out.top_genes,
-            FEATURE_SELECTION_PADJ_HUMAN.out.count_train,
+            FEATURE_SELECTION_PADJ_HUMAN.out.norm_train_count,
             PREPROCESS.out.human_train_set,
             PREPROCESS.out.human_test_set
         )
