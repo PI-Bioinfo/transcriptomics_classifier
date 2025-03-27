@@ -35,46 +35,72 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
         PREPROCESS.out.viral_train_set
     )
 
-    // Features selection
-    FEATURE_SELECTION_PADJ_HUMAN(
-        PREPROCESS.out.human_train_set,
-        DESEQ2_HUMAN.out.normalized_counts,
-        DESEQ2_HUMAN.out.deseq2_results
-    )
-
     FEATURE_SELECTION_PADJ_VIRAL(
         PREPROCESS.out.viral_train_set,
         DESEQ2_VIRAL.out.normalized_counts,
         DESEQ2_VIRAL.out.deseq2_results
     )
 
-    // Combining counts
-    COMBINE_COUNTS(
+    FEATURE_SELECTION_PADJ_HUMAN(
+        PREPROCESS.out.human_train_set,
         DESEQ2_HUMAN.out.normalized_counts,
-        DESEQ2_VIRAL.out.normalized_counts
+        DESEQ2_HUMAN.out.deseq2_results
     )
 
-    // Classification
-    CLASSIFICATION(
-        FEATURE_SELECTION_PADJ.out.top_genes,
-        FEATURE_SELECTION_PADJ.out.count_train,
-        PREPROCESS.out.train_set,
-        PREPROCESS.out.test_set
-    )
-    XGBOOST(
-        PREPROCESS.out.train_set,
-        PREPROCESS.out.test_set
-    )
-    RANDOM_FOREST(
-        PREPROCESS.out.train_set,
-        PREPROCESS.out.test_set
-    )
+    if ( params.data_type == "viral") {
 
-    // Inference on unseen data
-    // INFERENCE(
-    //     ch_inference_set,
-    //     CLASSIFICATION.out.selected_features.first(),
-    //     CLASSIFICATION.out.coef_matrix.first()
-    // )
+        CLASSIFICATION(
+            FEATURE_SELECTION_PADJ_VIRAL.out.top_genes,
+            FEATURE_SELECTION_PADJ_VIRAL.out.count_train,
+            PREPROCESS.out.viral_train_set,
+            PREPROCESS.out.viral_test_set
+        )
+
+        XGBOOST(
+            PREPROCESS.out.viral_train_set,
+            PREPROCESS.out.viral_test_set
+        )
+        
+        RANDOM_FOREST(
+            PREPROCESS.out.viral_train_set,
+            PREPROCESS.out.viral_test_set
+        )
+
+    }
+
+    if ( params.data_type == "human") {
+
+        CLASSIFICATION(
+            FEATURE_SELECTION_PADJ_HUMAN.out.top_genes,
+            FEATURE_SELECTION_PADJ_HUMAN.out.count_train,
+            PREPROCESS.out.human_train_set,
+            PREPROCESS.out.human_test_set
+        )
+
+        XGBOOST(
+            PREPROCESS.out.human_train_set,
+            PREPROCESS.out.human_test_set
+        )
+
+        RANDOM_FOREST(
+            PREPROCESS.out.human_train_set,
+            PREPROCESS.out.human_test_set
+        )
+    }
+
+    if ( params.data_type == "combined" ) {
+
+        COMBINE_COUNTS(
+            DESEQ2_HUMAN.out.normalized_counts,
+            DESEQ2_VIRAL.out.normalized_counts
+        )
+
+        CLASSIFICATION(
+            FEATURE_SELECTION_PADJ_HUMAN.out.top_genes,
+            FEATURE_SELECTION_PADJ_HUMAN.out.count_train,
+            PREPROCESS.out.human_train_set,
+            PREPROCESS.out.human_test_set
+        )
+    }
     
 }

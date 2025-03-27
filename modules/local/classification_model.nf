@@ -2,7 +2,6 @@ process CLASSIFICATION {
     tag "${meta}"
 
     conda '/opt/miniconda/envs/asthma_classifier'
-    publishDir "result/", mode: 'copy'
 
     input:
     tuple val(meta), path(top_genes)             
@@ -40,9 +39,6 @@ process CLASSIFICATION {
     y <- as.numeric(y) - 1
     # X <- cbind(X, Age = as.numeric(meta_train\$Age), Sex = as.numeric(meta_train\$Sex) - 1)
 
-    head(meta_train)
-    head(X)
-
     # Performing Lasso regression
     cv_lasso <- cv.glmnet(X, y, family = "binomial", alpha = 1, nfolds = 10)
     lambda_opt <- cv_lasso\$lambda.min
@@ -51,8 +47,9 @@ process CLASSIFICATION {
     selected_features <- rownames(coef_matrix)[coef_matrix[, 1] != 0]
 
     # Selecting features
-    selected_genes <- top_genes[!(top_genes == "(Intercept)" | top_genes == "Age" | top_genes == "Sex")]
+    selected_genes <- selected_features[!(selected_features == "(Intercept)" | selected_features == "Age" | selected_features == "Sex")]
     intercept <- coef_matrix["(Intercept)", ]
+
     beta_gene_values <- coef_matrix[selected_genes, ]
     # beta_demo_value <- coef_matrix["Age", ]
     # demo_values <- as.matrix(as.numeric(as.factor(meta_test\$Age)) - 1)

@@ -2,7 +2,6 @@ process FEATURE_SELECTION_PADJ {
     tag "${meta}"
 
     conda '/opt/miniconda/envs/asthma_classifier'
-    publishDir "result/", mode: 'copy'
 
     input:
     tuple val(meta), path(meta_train), path(count_train)

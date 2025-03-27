@@ -2,7 +2,6 @@ process INFERENCE {
     tag "${meta}"
 
     conda '/opt/miniconda/envs/asthma_classifier'
-    publishDir "result/", mode: 'copy'
 
     input:
     tuple val(meta), path(meta_val), path(count_val)

@@ -16,48 +16,37 @@ process XGBOOST {
     import xgboost as xgb
     from sklearn.preprocessing import LabelEncoder
     from sklearn.model_selection import train_test_split
-    from sklearn.metrics import accuracy_score, f1_score
+    from sklearn.metrics import accuracy_score, classification_report, f1_score
 
     X_train = pd.read_csv("${count_train}", index_col=0).T
     X_test = pd.read_csv("${count_test}", index_col=0).T
     y_train = pd.read_csv("${meta_train}", index_col=0).loc[:, "group"]
     y_test = pd.read_csv("${meta_test}", index_col=0).loc[:, "group"]
+    model = xgb.XGBClassifier()
 
-    # Encode categorical data
     label_encoder = LabelEncoder()
     y_train = label_encoder.fit_transform(y_train)
     y_test = label_encoder.transform(y_test)
-
-    print(X_train.shape)
-    print(y_train.shape)
-
     dtrain = xgb.DMatrix(X_train, label=y_train)
     dtest = xgb.DMatrix(X_test, label=y_test)
 
-    # XGBoost parameters (for classification)
-    params = {
-        "objective": "multi:softmax", 
-        "num_class": len(np.unique(y_train)),  
-        "eval_metric": "mlogloss", 
-        "max_depth": 6,  # Tree depth
-        "eta": 0.1,  # Learning rate
-        "subsample": 0.8,  # Row sampling
-        "colsample_bytree": 0.8,  # Feature sampling
-        "seed": 42,
-    }
+    X_train, X_val, y_train, y_val=train_test_split(X_train, y_train, random_state=0)
 
-    # Train XGBoost classifier
-    num_rounds = 100
-    model = xgb.train(params, dtrain, num_rounds)
+    model = xgb.XGBClassifier(
+        n_estimators = 500,
+        learning_rate = 0.05,
+        use_label_encoder = False,
+        eval_metric = "logloss",
+        early_stopping_rounds = 5,
+        n_jobs = -1
+    )
 
-    # Make predictions
-    y_pred = model.predict(dtest)
+    model.fit(X_train, y_train,                    
+            eval_set = [(X_val,y_val)],
+            verbose = False)
 
-    # Evaluate performance
-    accuracy = accuracy_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred, average="weighted")  # Weighted F1 for imbalanced classes
-
-    print(f"Accuracy: {accuracy:.4f}")
-    print(f"F1-score: {f1:.4f}")
+    pred_test = model.predict(X_test)
+    test_score = accuracy_score(pred_test, y_test)
+    print("Test score:", np.round(test_score,2))
     """
 }

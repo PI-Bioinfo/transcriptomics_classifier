@@ -23,7 +23,7 @@ process PREPROCESS {
     set.seed(${sampling_seed})
     suppressMessages(library(caret))
 
-    metadata <- read.csv("${metadata}", row.names=2)
+    metadata <- read.csv("${metadata}", row.names=1)
     rawdata <- read.csv("${countdata}", row.names=1)
     viraldata <- read.csv("${viraldata}", row.names=1)
 
