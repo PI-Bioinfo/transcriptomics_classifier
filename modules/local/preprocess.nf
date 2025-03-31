@@ -9,10 +9,8 @@ process PREPROCESS {
     tuple val(meta_viral), path(viraldata) 
 
     output:
-    tuple val(meta_human), path("*meta_train.csv"), path("*human_count_train.csv")        , emit: human_train_set
-    tuple val(meta_human), path("*meta_test.csv"), path("*human_count_test.csv")          , emit: human_test_set
-    tuple val(meta_viral), path("*meta_train.csv"), path("*viral_count_train.csv")        , emit: viral_train_set
-    tuple val(meta_viral), path("*meta_test.csv"), path("*viral_count_test.csv")          , emit: viral_test_set
+    tuple val(meta_human), path("*meta_train.csv"), path("*human_count_train.csv"), path("*viral_count_train.csv")   , emit: train_set
+    tuple val(meta_human), path("*meta_test.csv"), path("*human_count_test.csv"), path("*viral_count_test.csv")      , emit: test_set
 
     script:
     def sampling_ratio          = task.ext.sampling_ratio ?: 0.8

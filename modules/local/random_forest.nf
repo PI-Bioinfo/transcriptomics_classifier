@@ -4,8 +4,10 @@ process RANDOM_FOREST {
     container "community.wave.seqera.io/library/matplotlib_numpy_pandas_python-graphviz_scikit-learn:13b8c32822c15757"
 
     input:
-    tuple val(meta), path(meta_train), path(count_train)
-    tuple val(meta), path(meta_test), path(count_test)   
+    tuple val(meta), path(meta_train)
+    tuple val(meta), path(meta_test)
+    tuple val(meta), path(count_train)
+    tuple val(meta), path(count_test)   
 
     output:
 

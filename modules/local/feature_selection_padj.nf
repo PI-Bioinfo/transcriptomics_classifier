@@ -4,7 +4,8 @@ process FEATURE_SELECTION_PADJ {
     conda '/opt/miniconda/envs/asthma_classifier'
 
     input:
-    tuple val(meta), path(meta_train), path(count_train)
+    tuple val(meta), path(count_train)
+    tuple val(meta), path(meta_train)
     tuple val(meta), path(normalized_counts)             
     tuple val(meta), path(deseq2_results)
 

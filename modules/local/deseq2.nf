@@ -4,7 +4,8 @@ process DESEQ2 {
     conda '/opt/miniconda/envs/asthma_classifier'
 
     input:
-    tuple val(meta), path(meta_train), path(count_train)
+    tuple val(meta), path(count_train)
+    tuple val(meta2), path(meta_train)
 
     output:
     tuple val(meta), path("*MA_plot.png")                       , emit: ma_plot

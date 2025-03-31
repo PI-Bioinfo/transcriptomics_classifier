@@ -5,11 +5,11 @@ process COMBINE_RAW_COUNTS {
 
     input:
     val meta
-    tuple val(meta_human), val(human_meta), path(human_count)
-    tuple val(meta_viral), val(viral_meta), path(viral_count)
+    tuple val(meta_human), path(human_count)
+    tuple val(meta_viral), path(viral_count)
 
     output:
-    tuple val(meta), val(human_meta), path("*merged_count.csv"),       emit: merged
+    tuple val(meta), path("*merged_count.csv"),       emit: merged
 
     script:
     """

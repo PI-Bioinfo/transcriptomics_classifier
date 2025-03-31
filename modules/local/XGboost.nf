@@ -5,8 +5,10 @@ process XGBOOST {
     publishDir "result/", mode: 'copy'
 
     input:
-    tuple val(meta), path(meta_train), path(count_train)
-    tuple val(meta), path(meta_test), path(count_test)   
+    tuple val(meta), path(meta_train)
+    tuple val(meta), path(meta_test)
+    tuple val(meta), path(count_train)
+    tuple val(meta), path(count_test)   
     
     script:
     """

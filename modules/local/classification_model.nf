@@ -6,8 +6,10 @@ process CLASSIFICATION {
     input:
     tuple val(meta), path(top_genes)             
     tuple val(meta), path(norm_train_count)
-    tuple val(meta), path(meta_train), path(count_train)
-    tuple val(meta), path(meta_test), path(count_test)   
+    tuple val(meta), path(meta_train)
+    tuple val(meta), path(meta_test)
+    tuple val(meta), path(count_train)
+    tuple val(meta), path(count_test)   
 
     output:
     tuple val(meta), path("*pred_score.csv")                  , optional: true, emit: predictions
