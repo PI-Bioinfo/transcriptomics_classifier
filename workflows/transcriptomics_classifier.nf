@@ -16,8 +16,9 @@ include { FEATURE_SELECTION_PADJ as FEATURE_SELECTION_PADJ_VIRAL  } from "${proj
 include { CLASSIFICATION                                          } from "${projectDir}/modules/local/classification_model.nf"
 include { RANDOM_FOREST                                           } from "${projectDir}/modules/local/random_forest.nf"
 include { XGBOOST                                                 } from "${projectDir}/modules/local/XGboost.nf"
-include { INFERENCE                                               } from "${projectDir}/modules/local/inference.nf"
 include { MULTIQC                                                 } from "${projectDir}/modules/local/multiqc.nf"
+
+include { INFERENCE                                               } from "${projectDir}/subworkflows/inference.nf"
 
 workflow TRANSCRIPTOMICS_CLASSIFIER {
     // Loading channels
@@ -27,9 +28,15 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
     ch_metadata             = ch_meta_human.combine(Channel.fromPath(params.design, checkIfExists: true))
     ch_human_countdata      = ch_meta_human.combine(Channel.fromPath(params.human_countdata, checkIfExists: true))
     ch_viral_countdata      = ch_meta_viral.combine(Channel.fromPath(params.viral_countdata, checkIfExists: true))
+    ch_split_option         = Channel.of(params.split_data_by)
+
+    ch_inference            = Channel.of(params.inference)
+    ch_inference_meta       = ch_inference.combine(Channel.fromPath(params.inference_design, checkIfExists: true))
+    ch_inference_data       = ch_inference.combine(Channel.fromPath(params.inference_count, checkIfExists: true))
 
     // Splitting train & test
     PREPROCESS(
+        ch_split_option,
         ch_metadata,
         ch_human_countdata,
         ch_viral_countdata
@@ -91,7 +98,6 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             FEATURE_SELECTION_PADJ_VIRAL.out.norm_train_count,
             ch_train_metadata,
             ch_test_metadata,
-            ch_viral_train_set,
             ch_viral_test_set
         )
 
@@ -117,7 +123,6 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             FEATURE_SELECTION_PADJ_HUMAN.out.norm_train_count,
             ch_train_metadata,
             ch_test_metadata,
-            ch_human_train_set,
             ch_human_test_set
         )
 
@@ -171,7 +176,6 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             ch_combined_normalized_counts,
             ch_train_metadata,
             ch_test_metadata,
-            ch_combined_train_counts,
             ch_combined_test_counts
         )
 
@@ -192,6 +196,16 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             ch_test_metadata,
             NORMALIZE_COMBINE_COUNT.out.combined_train_counts,
             NORMALIZE_COMBINE_COUNT.out.combined_test_counts
+        )
+    }
+
+    if ( params.inference ) {
+        INFERENCE(
+            ch_inference_data,
+            ch_inference_meta,
+            CLASSIFICATION.out.coef_matrix,
+            XGBOOST.out.model,
+            RANDOM_FOREST.out.model
         )
     }
     

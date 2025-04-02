@@ -17,6 +17,7 @@ process DESEQ2 {
     """
     #!/usr/bin/env Rscript
 
+    suppressMessages(library(limma))
     suppressMessages(library(DESeq2))
     suppressMessages(library(caret))
 
@@ -25,13 +26,14 @@ process DESEQ2 {
     fdr_cutoff <- as.numeric("0.05")
     lfc_cutoff <- as.numeric("0")
 
+    print(meta_train)
+
     dds <- DESeqDataSetFromMatrix(
         countData=count_train,
         colData=meta_train,
         design= ~ group,
     )
     
-    dds <- dds[rowSums(counts(dds)) >= 10,]
     dds <- DESeq(dds)
     res <- results(dds)
 
@@ -57,10 +59,24 @@ process DESEQ2 {
         theme(legend.position="none")
     dev.off()
 
-    # Export normalized counts
+    # Convert normalized counts
     normalized_counts <- counts(dds, normalized=FALSE)
-    log_norm <- assay(varianceStabilizingTransformation(dds))
-    write.csv(log_norm, "${meta}_normalized_counts.csv")
+    log_norm <- varianceStabilizingTransformation(dds)
+
+    write.csv(assay(log_norm), "${meta}_normalized_counts.csv")
+
+    # Remove batch effects
+    png("${meta}_before_batch_effect_removal.png", width=800, height=600)
+    plotPCA(log_norm, "study")
+    dev.off()
+
+    assay(log_norm) <- limma::removeBatchEffect(assay(log_norm), dds\$study)
+
+    png("${meta}_after_batch_effect_removal.png", width=800, height=600)
+    plotPCA(log_norm, "study")
+    dev.off()
+
+    # write.csv(assay(log_norm), "${meta}_normalized_counts.csv")
     """
 
 }

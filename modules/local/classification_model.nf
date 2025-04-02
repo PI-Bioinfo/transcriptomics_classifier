@@ -8,7 +8,6 @@ process CLASSIFICATION {
     tuple val(meta), path(norm_train_count)
     tuple val(meta), path(meta_train)
     tuple val(meta), path(meta_test)
-    tuple val(meta), path(count_train)
     tuple val(meta), path(count_test)   
 
     output:
@@ -26,7 +25,7 @@ process CLASSIFICATION {
     suppressMessages(library(glmnet))
 
     # Loading data
-    top_genes <- read.csv("${top_genes}")
+    top_genes <- read.csv("${top_genes}", row.names=1)
 
     meta_train <- read.csv("${meta_train}", row.names=1)
     count_train <- read.csv("${norm_train_count}", row.names=1)
@@ -34,13 +33,12 @@ process CLASSIFICATION {
     meta_test <- read.csv("${meta_test}", row.names=1)
     count_test <- read.csv("${count_test}", row.names=1)
 
-    # Constructing X and y
-    # meta_train\$Sex <- as.factor(meta_train\$Sex)
-    # meta_test\$Sex <- as.factor(meta_test\$Sex)
-
-    X <- as.matrix(t(count_train))
+    X <- as.matrix(t(count_train[rownames(top_genes), ,drop=FALSE]))
     y <- factor(meta_train\$group, levels = c("normal", "cancer"))
     y <- as.numeric(y) - 1
+
+    write.csv(X, "X.csv")
+    write.csv(y, "y.csv")
 
     # Performing Lasso regression
     cv_lasso <- cv.glmnet(X, y, family = "binomial", alpha = 1, nfolds = 10)
@@ -49,21 +47,23 @@ process CLASSIFICATION {
     coef_matrix <- as.matrix(coef(lasso_model))
     selected_features <- rownames(coef_matrix)[coef_matrix[, 1] != 0]
 
+    write.csv(selected_features, "selected_features.csv")
+    write.csv(coef_matrix, "coef_matrix.csv")
+
     # Selecting features
     selected_genes <- selected_features[!(selected_features == "(Intercept)" | selected_features == "Age" | selected_features == "Sex")]
     intercept <- coef_matrix["(Intercept)", ]
-
     beta_gene_values <- coef_matrix[selected_genes, ]
-    # beta_demo_value <- coef_matrix["Age", ]
-    # demo_values <- as.matrix(as.numeric(as.factor(meta_test\$Age)) - 1)
 
     # Computing RSRS 
     rsrs <- count_test[selected_genes, ]
+
+    write.csv(rsrs, "rsrs.csv")
     rsrs <- log2(rsrs + 1)
 
+    print(head(rsrs))
+
     rsrs_score <- t(as.matrix(beta_gene_values)) %*% as.matrix(rsrs)
-    # sex_score <- demo_values %*% beta_demo_value
-    # test_pred_score <- intercept + rsrs_score + t(sex_score)
     test_pred_score <- intercept + rsrs_score
 
     # Generating prediction
@@ -74,6 +74,9 @@ process CLASSIFICATION {
 
     roc_obj <- roc(true_labels, mu)
     best_cutoff <- coords(roc_obj, "best", ret = "threshold")
+
+    print(best_cutoff)
+
     pred_labels <- ifelse(as.vector(mu) < as.numeric(best_cutoff[1]), 0, 1)
 
     conf_matrix <- confusionMatrix(as.factor(pred_labels), as.factor(true_labels))

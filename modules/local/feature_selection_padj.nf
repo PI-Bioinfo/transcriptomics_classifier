@@ -36,7 +36,7 @@ process FEATURE_SELECTION_PADJ {
     norm_train_count <- normalized_counts[top_genes, rownames(meta_train)]
 
     # Exporting signatures
-    write.csv(top_genes, "${meta}_top_genes.csv")
+    write.csv(top_genes, "${meta}_top_genes.csv", row.names=FALSE)
     write.csv(norm_train_count, "${meta}_norm_train_count.csv")
     """
 }

@@ -10,12 +10,14 @@ process RANDOM_FOREST {
     tuple val(meta), path(count_test)   
 
     output:
+    tuple val(meta), path("random_forest_classifier.pkl")                   , emit: model
 
     script:
     """
     #!/usr/bin/env python3
     import numpy as np
     import pandas as pd
+    import pickle
     from sklearn.preprocessing import LabelEncoder
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.model_selection import cross_val_score
@@ -37,16 +39,18 @@ process RANDOM_FOREST {
     )
     model.fit(X_train, y_train)
     cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring="accuracy")
-
     y_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test) 
 
     accuracy = accuracy_score(y_test, y_pred)
     roc_auc = roc_auc_score(y_test, y_prob[:, 1], multi_class="ovr")  
 
+    model_pkl_file = "random_forest_classifier.pkl"
+    with open(model_pkl_file, 'wb') as file:  
+        pickle.dump(model, file)
+
     print(f"Cross-validation accuracy: {cv_scores.mean():.4f} ± {cv_scores.std():.4f}")
     print(f"Accuracy: {accuracy:.4f}")
     print(f"ROC-AUC Score: {roc_auc:.4f}")
     """
-
 }
