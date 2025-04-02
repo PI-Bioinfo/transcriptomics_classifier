@@ -2,7 +2,7 @@ nextflow run main.nf \
     --meta HPV \
     --outdir result/ \
     --data_type combined \
-    --split_data_by seed \
+    --split_data_by design \
     --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/design_full.csv \
     --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/human_counts.csv \
     --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/viral_counts.csv \

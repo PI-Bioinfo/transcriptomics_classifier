@@ -31,7 +31,7 @@ process DESEQ2 {
     dds <- DESeqDataSetFromMatrix(
         countData=count_train,
         colData=meta_train,
-        design= ~ group,
+        design= ~ group + study
     )
     
     dds <- DESeq(dds)
@@ -64,19 +64,6 @@ process DESEQ2 {
     log_norm <- varianceStabilizingTransformation(dds)
 
     write.csv(assay(log_norm), "${meta}_normalized_counts.csv")
-
-    # Remove batch effects
-    png("${meta}_before_batch_effect_removal.png", width=800, height=600)
-    plotPCA(log_norm, "study")
-    dev.off()
-
-    assay(log_norm) <- limma::removeBatchEffect(assay(log_norm), dds\$study)
-
-    png("${meta}_after_batch_effect_removal.png", width=800, height=600)
-    plotPCA(log_norm, "study")
-    dev.off()
-
-    # write.csv(assay(log_norm), "${meta}_normalized_counts.csv")
     """
 
 }
