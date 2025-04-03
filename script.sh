@@ -2,10 +2,11 @@ nextflow run main.nf \
     --meta HPV \
     --outdir result/ \
     --data_type combined \
-    --split_data_by design \
+    --split_data_by seed \
     --design /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/design_full.csv \
     --human_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/human_counts.csv \
     --viral_countdata /home/bdkhoi/projects/transcriptomics_classifier/data/112_samples/viral_counts.csv \
-    --inference_count /home/bdkhoi/projects/transcriptomics_classifier/data/inference/clean_count.csv \
-    --inference_design /home/bdkhoi/projects/transcriptomics_classifier/data/inference/design.csv \
+    --inference_humancount /home/bdkhoi/projects/transcriptomics_classifier/data/test_data/merged_counts_human/merged_gene_counts.csv \
+    --inference_viralcount /home/bdkhoi/projects/transcriptomics_classifier/data/test_data/merged_counts_virus/merged_gene_counts.csv \
+    --inference_design /home/bdkhoi/projects/transcriptomics_classifier/data/test_data/design.csv \
     -resume 2>&1 | tee headnode.log

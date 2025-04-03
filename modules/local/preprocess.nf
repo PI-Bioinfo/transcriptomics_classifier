@@ -27,9 +27,6 @@ process PREPROCESS {
     rawdata     = pd.read_csv("${countdata}", index_col=0)
     viraldata   = pd.read_csv("${viraldata}", index_col=0)
 
-    rawdata     = rawdata[rawdata.sum(axis=1) > 10]
-    viraldata   = viraldata[viraldata.sum(axis=1) > 10]
-
     if ("${split_option}" == "seed"):
         np.random.seed(${sampling_seed})
 

@@ -3,11 +3,13 @@ include { COMBINE_RAW_COUNTS as COMBINE_TRAIN                     } from "${proj
 include { COMBINE_RAW_COUNTS as COMBINE_TEST                      } from "${projectDir}/modules/local/combine_raw_counts.nf"
 
 include { COMBINE_COUNTS                                          } from "${projectDir}/modules/local/combine_counts.nf"
+include { COMBINE_COUNTS as COMBINE_INFERENCE_COUNTS              } from "${projectDir}/modules/local/combine_counts.nf"
 include { COMBINE_GENES                                           } from "${projectDir}/modules/local/combine_genes.nf"
 
 include { DESEQ2 as DESEQ2_HUMAN                                  } from "${projectDir}/modules/local/deseq2.nf"
 include { DESEQ2 as DESEQ2_VIRAL                                  } from "${projectDir}/modules/local/deseq2.nf"
 include { NORMALIZE_COUNT                                         } from "${projectDir}/modules/local/normalize_counts.nf"
+// include { NORMALIZE_INFERENCE_COUNT                               } from "${projectDir}/modules/local/normalize_inference.nf"
 include { NORMALIZE_COMBINE_COUNT                                 } from "${projectDir}/modules/local/normalize_combined_counts.nf"
 
 include { FEATURE_SELECTION_PADJ as FEATURE_SELECTION_PADJ_HUMAN  } from "${projectDir}/modules/local/feature_selection_padj.nf"
@@ -32,7 +34,8 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
 
     ch_inference            = Channel.of(params.inference)
     ch_inference_meta       = ch_inference.combine(Channel.fromPath(params.inference_design, checkIfExists: true))
-    ch_inference_data       = ch_inference.combine(Channel.fromPath(params.inference_count, checkIfExists: true))
+    ch_inference_humandata  = ch_inference.combine(Channel.fromPath(params.inference_humancount, checkIfExists: true))
+    ch_inference_viraldata  = ch_inference.combine(Channel.fromPath(params.inference_viralcount, checkIfExists: true))
 
     // Splitting train & test
     PREPROCESS(
@@ -67,6 +70,13 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
         ch_viral_test_set
     )
 
+    if ( params.inference ) {
+        NORMALIZE_INFERENCE_COUNT(
+            ch_inference_humandata,
+            ch_inference_viraldata
+        )
+    }
+    
     DESEQ2_HUMAN(
         ch_human_train_set,
         ch_train_metadata
@@ -114,6 +124,18 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             NORMALIZE_COUNT.out.viral_train_set,
             NORMALIZE_COUNT.out.viral_test_set
         )
+
+        if ( params.inference ) {
+
+            INFERENCE(
+                NORMALIZE_INFERENCE_COUNT.out.viral_set,
+                ch_inference_meta,
+                CLASSIFICATION.out.coef_matrix,
+                XGBOOST.out.model,
+                RANDOM_FOREST.out.model
+            )
+
+        }
     }
 
     if ( params.data_type == "human") {
@@ -139,6 +161,18 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
             NORMALIZE_COUNT.out.human_train_set,
             NORMALIZE_COUNT.out.human_test_set
         )
+
+        if ( params.inference ) {
+
+            INFERENCE(
+                NORMALIZE_INFERENCE_COUNT.out.human_set,
+                ch_inference_meta,
+                CLASSIFICATION.out.coef_matrix,
+                XGBOOST.out.model,
+                RANDOM_FOREST.out.model
+            )
+            
+        }
     }
 
     if ( params.data_type == "combined" ) {
@@ -200,8 +234,16 @@ workflow TRANSCRIPTOMICS_CLASSIFIER {
     }
 
     if ( params.inference ) {
+
+        COMBINE_INFERENCE_COUNTS(
+            ch_meta,
+            NORMALIZE_INFERENCE_COUNT.out.human_set,
+            NORMALIZE_INFERENCE_COUNT.out.viral_set
+        )
+        ch_combined_inference_counts = COMBINE_INFERENCE_COUNTS.out.merged
+
         INFERENCE(
-            ch_inference_data,
+            ch_combined_inference_counts,
             ch_inference_meta,
             CLASSIFICATION.out.coef_matrix,
             XGBOOST.out.model,

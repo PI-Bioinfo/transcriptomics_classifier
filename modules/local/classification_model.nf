@@ -13,7 +13,7 @@ process CLASSIFICATION {
     output:
     tuple val(meta), path("*pred_score.csv")                  , optional: true, emit: predictions
     tuple val(meta), path("*selected_features.csv")           , optional: true, emit: selected_features
-    tuple val(meta), path("*coef_matrix.csv")                 , optional: true, emit: coef_matrix
+    tuple val(meta), path("coef_matrix.csv")                  , optional: true, emit: coef_matrix
     tuple val(meta), path("*conf_matrix.csv")                 , optional: true, emit: conf_matrix
 
     script:

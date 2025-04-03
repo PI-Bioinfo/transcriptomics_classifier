@@ -62,6 +62,7 @@ process DESEQ2 {
     # Convert normalized counts
     normalized_counts <- counts(dds, normalized=FALSE)
     log_norm <- varianceStabilizingTransformation(dds)
+    # assay(log_norm) <- limma::removeBatchEffect(assay(log_norm), log_norm\$study)
 
     write.csv(assay(log_norm), "${meta}_normalized_counts.csv")
     """
